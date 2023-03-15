@@ -22,6 +22,7 @@ jobs:
         with:
          name: .env
          path: github
+         retention-days: 1
   trigger_build:
     needs: env
     uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
