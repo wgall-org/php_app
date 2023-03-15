@@ -9,7 +9,8 @@ environments:
 ---
 countries:     
      - Poland
+     - Germany
 environments:
      components:
           - menu
-          - com1
+          - tree
