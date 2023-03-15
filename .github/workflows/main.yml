@@ -1,0 +1,28 @@
+name: Build and deploy application
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  env:
+   name: Prepare env 
+   runs-on: ubuntu-latest
+   steps:
+      - name: Correct project name
+        run: echo "reponame=$(echo ${{ github.event.repository.name }} | tr _ - )" >> $GITHUB_ENV
+      - uses: actions/checkout@v3
+      - name: Generate .env for stage or dev
+        run: |          
+          mkdir github
+          cat .env.example > github/.env
+          cat github/.env
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+         name: .env
+         path: github
+  trigger_build:
+    needs: env
+    uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
+    secrets: inherit

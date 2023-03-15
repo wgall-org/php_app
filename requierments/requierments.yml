@@ -1,0 +1,7 @@
+countries:
+     - Japan
+environments:
+  components:
+        - com1
+        - menu
+        - japan
