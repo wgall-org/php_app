@@ -4,4 +4,12 @@ environments:
   components:
         - com1
         - menu
-        - japan
+        - tree
+...
+---
+countries:     
+     - Poland
+environments:
+     components:
+          - menu
+          - com1
