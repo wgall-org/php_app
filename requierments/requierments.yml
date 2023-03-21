@@ -5,12 +5,12 @@ environments:
         - com1
         - menu
         - tree
-...
----
-countries:     
-     - Poland
-     - Germany
-environments:
-     components:
-          - menu
-          - tree
+# ...
+# ---
+# countries:     
+#      - Poland
+#      - Germany
+# environments:
+#      components:
+#           - menu
+#           - tree
