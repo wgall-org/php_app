@@ -11,7 +11,7 @@ on:
 jobs:
 
   env:
-   if: ${{ github.event_name == 'push'}}
+   if: ${{ github.event_name == 'workflow_dispatch'}}
    name: Prepare env 
    runs-on: ubuntu-latest
    steps:
@@ -43,7 +43,7 @@ jobs:
           retention-days: 1
   trigger_build:
     needs: env
-    if: ${{ github.event_name == 'push'}}
+    if: ${{ github.event_name == 'workflow_dispatch'}}
     uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
     secrets: inherit
   production:
