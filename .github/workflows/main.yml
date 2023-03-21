@@ -25,5 +25,11 @@ jobs:
          retention-days: 1
   trigger_build:
     needs: env
+    if: ${{ github.event_name == 'psuh'}}
     uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
+    secrets: inherit
+  production:
+    needs: env 
+    if: ${{ github.event_name == 'release'}}
+    uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/production.yml@dev
     secrets: inherit
