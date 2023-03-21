@@ -3,6 +3,10 @@ name: Build and deploy application
 on:
   workflow_dispatch:
 
+  release:
+    types:
+      - published
+
 
 jobs:
   env:
