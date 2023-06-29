@@ -1,29 +1,41 @@
-name: Build and deploy application
+name: Test webhook 
 
-on:
-  workflow_dispatch:
-
-
+on: 
+  push:
+  
 jobs:
-  env:
-   name: Prepare env 
-   runs-on: ubuntu-latest
-   steps:
-      - name: Correct project name
-        run: echo "reponame=$(echo ${{ github.event.repository.name }} | tr _ - )" >> $GITHUB_ENV
-      - uses: actions/checkout@v3
-      - name: Generate .env for stage or dev
-        run: |          
-          mkdir github
-          cat .env.example > github/.env
-          cat github/.env
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-         name: .env
-         path: github
-         retention-days: 1
-  trigger_build:
-    needs: env
-    uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
-    secrets: inherit
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Print test 
+        run: | 
+          echo test
+# name: Build and deploy application
+
+# on:
+#   workflow_dispatch:
+
+
+# jobs:
+#   env:
+#    name: Prepare env 
+#    runs-on: ubuntu-latest
+#    steps:
+#       - name: Correct project name
+#         run: echo "reponame=$(echo ${{ github.event.repository.name }} | tr _ - )" >> $GITHUB_ENV
+#       - uses: actions/checkout@v3
+#       - name: Generate .env for stage or dev
+#         run: |          
+#           mkdir github
+#           cat .env.example > github/.env
+#           cat github/.env
+#       - name: Upload artifact
+#         uses: actions/upload-artifact@v3
+#         with:
+#          name: .env
+#          path: github
+#          retention-days: 1
+#   trigger_build:
+#     needs: env
+#     uses: wgall-org/multiregion_deployments_pipeline/.github/workflows/main.yml@dev
+#     secrets: inherit
